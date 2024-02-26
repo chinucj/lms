@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class KtService {
   
+  
 
   constructor(private http : HttpClient) { }
 
@@ -15,5 +16,9 @@ export class KtService {
 
   getKtList() {
     return this.http.get("http://localhost:9090/kt");
+  }
+
+  deleteKt(ktId: any) {
+    return this.http.delete("http://localhost:9090/kt"+ "/" + ktId);
   }
 }

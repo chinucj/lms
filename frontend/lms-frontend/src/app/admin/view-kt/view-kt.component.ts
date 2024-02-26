@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { KtService } from '../kt.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-kt',
@@ -32,8 +33,24 @@ export class ViewKtComponent {
     this.getKtList();
   }
 
-  deleteKt(arg0: any) {
-    throw new Error('Method not implemented.');
+  deleteKt(ktId: any) {
+    Swal.fire({
+      title: 'Confirm Deletion',
+      text: 'Are you sure you want to delete this data?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it',
+      cancelButtonText: 'No, cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.ktService.deleteKt(ktId).subscribe(data =>{
+          Swal.fire('Data Deleted', 'The data has been successfully deleted.', 'success');
+          this.getKtList();
+        },error =>{
+          Swal.fire('Error', 'An error occurred while fetching the employee data.', 'error');
+        })
+      }
+    });
   }
   editKt(arg0: any) {
     throw new Error('Method not implemented.');
