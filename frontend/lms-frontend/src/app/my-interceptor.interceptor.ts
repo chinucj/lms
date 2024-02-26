@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -19,18 +20,10 @@ export class MyInterceptorInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           'Authorization': `Bearer ${userToken}`,
-          'withCredentials': 'true',
-        },
-      });
-    } else {
-      request = request.clone({
-        setHeaders: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Encrypted': 'true',
         },
       });
     }
-
     return next.handle(request);
   }
 }
+
