@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path : '',
     loadChildren : ()=> import ('../app/login/login.module').then(m => m.LoginModule)
-  }
+  },
 ];
 
 @NgModule({

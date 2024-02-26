@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    
+    <br>
+    <div class="row">
+        <table class="table table-light table-hover">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>KT Name</th>
+                    <th>KT Type</th>
+                    <th>KT Format</th>
+                    <th>KT File</th>
+                    <th>Project Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+        <!-- <tr *ngFor="let emp of empList | paginate :{
+            itemsPerPage : tableSize,
+            currentPage : page ,
+            totalItems: count
+            }; let i = index;"> -->
+            <tr *ngFor="let kt of ktList  let i = index;">   
+        <td>{{i+1}}</td>
+        <td>{{kt.VCH_KT_NAME}}</td>
+        <td>{{kt.VCH_KT_TYPE}}</td>
+        <td>{{kt.VCH_KT_FORMAT}}</td>
+        <td>{{kt.VCH_KT_PATH}}</td>
+        <td>{{kt.VCH_PROJECT_NAME}}</td>
+        
+        <!-- <td><a target="_blank" href="{{fileURL + emp.emp_file}}"><i class="fa-solid fa-download"></i></a></td> -->
+        <td>
+            <button type="submit" (click)="editKt(kt.INT_KT_ID)" class="btn btn-primary">Edit</button>
+            <button type="submit" (click)="deleteKt(kt.INT_KT_ID)" class="btn btn-danger">Delete</button>
+        </td>
+        </tr>
+            </tbody>
+          </table>
+        
+          <!-- <div class="d-flex justify-content-end">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)= "getTableDataChange($event)"></pagination-controls>
+          </div> -->
+    </div>
+    </div>
+    {{ktList |json}}

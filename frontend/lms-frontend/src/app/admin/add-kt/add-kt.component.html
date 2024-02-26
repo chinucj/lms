@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <h3>Add Knowledge Transfer</h3>
+  <div class="card mt-5">
+    <form [formGroup]="ktForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+      <div class="row m-5">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="ktName">KT Name:</label>
+            <span class="text-danger">*</span>
+            <input type="text" formControlName="ktName" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="ktType">KT Type:</label>
+            <span class="text-danger">*</span>
+            <select formControlName="ktType" class="form-control">
+              <option value="">Select KT Type</option>
+              <option value="Type1">Type 1</option>
+              <option value="Type2">Type 2</option>
+              <option value="Type3">Type 3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-5">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="ktFormat">KT Format:</label>
+            <span class="text-danger">*</span>
+            <select formControlName="ktFormat" class="form-control">
+              <option value="">Select KT Format</option>
+              <option value="Format1">Format 1</option>
+              <option value="Format2">Format 2</option>
+              <option value="Format3">Format 3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="ktFilePath">KT File Path:</label>
+            <span class="text-danger">*</span>
+            <input
+              type="file"
+              id="ktFilePath"
+              class="form-control-file"
+              (change)="uploadFile($event)"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="projectName">Project Name:</label>
+            <span class="text-danger">*</span>
+            <select formControlName="projectId" class="form-control">
+              <option value="">Select Project Name</option>
+              <option *ngFor="let project of projectList" value="{{project.projectId}}">{{project.projectName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mb-5">
+        <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
+            Submit
+          </button>
+      </div>
+     
+    </form>
+    {{ktForm.value | json}}
+  </div>
+</div>
