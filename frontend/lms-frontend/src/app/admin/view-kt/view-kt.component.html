@@ -15,12 +15,11 @@
                 </tr>
             </thead>
             <tbody>
-        <!-- <tr *ngFor="let emp of empList | paginate :{
+        <tr *ngFor="let kt of ktList | paginate :{
             itemsPerPage : tableSize,
             currentPage : page ,
             totalItems: count
-            }; let i = index;"> -->
-            <tr *ngFor="let kt of ktList  let i = index;">   
+            }; let i = index;">
         <td>{{i+1}}</td>
         <td>{{kt.VCH_KT_NAME}}</td>
         <td>{{kt.VCH_KT_TYPE}}</td>
@@ -37,9 +36,9 @@
             </tbody>
           </table>
         
-          <!-- <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-end">
             <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)= "getTableDataChange($event)"></pagination-controls>
-          </div> -->
+          </div>
     </div>
     </div>
     {{ktList |json}}

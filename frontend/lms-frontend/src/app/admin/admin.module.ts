@@ -8,6 +8,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { AddKtComponent } from './add-kt/add-kt.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewKtComponent } from './view-kt/view-kt.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -23,7 +24,8 @@ import { ViewKtComponent } from './view-kt/view-kt.component';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
  
 })
