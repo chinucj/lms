@@ -21,4 +21,8 @@ export class KtService {
   deleteKt(ktId: any) {
     return this.http.delete("http://localhost:9090/kt"+ "/" + ktId);
   }
+  getKtById(ktId:any){
+    return this.http.get("http://localhost:9090/kt"+ "/" + ktId)
+  }
+
 }

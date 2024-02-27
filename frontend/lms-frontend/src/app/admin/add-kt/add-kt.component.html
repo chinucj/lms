@@ -46,6 +46,11 @@
               class="form-control-file"
               (change)="uploadFile($event)"
             />
+            <div *ngIf="id > 0">
+
+              <a target="_blank"  href="{{viewFileUrl}}/{{ktForm.value.ktFilePath}}" class="btn btn-md btn-success"> <i class="bi bi-arrow-down-square-fill"></i></a>
+     
+             </div>
           </div>
         </div>
 
@@ -60,10 +65,34 @@
           </div>
         </div>
       </div>
-      <div class="text-center mb-5">
+      <div *ngIf="id===0"class="text-center mb-5">
+
         <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
+
             Submit
-          </button>
+
+          </button>&nbsp;
+
+        <button class="btn btn-danger" type="reset">Reset</button>
+
+
+
+
+      </div>
+
+      <div *ngIf="id > 0"class="text-center mb-5">
+
+        <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
+
+            Update
+
+          </button>&nbsp;
+
+        <button class="btn btn-danger" (click)="cancel()" >Cancel</button>
+
+
+
+
       </div>
      
     </form>
