@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path : 'view-kt',
         component : ViewKtComponent
+      },
+      {
+        path : 'edit-kt/:id',
+        component : AddKtComponent
       }
     ]
   },

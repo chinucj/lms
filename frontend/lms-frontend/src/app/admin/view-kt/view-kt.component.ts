@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { KtService } from '../kt.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-kt',
@@ -14,8 +15,9 @@ export class ViewKtComponent {
   tableSize: number = 10;
   count: number = 0;
   pageSizes = [10, 20, 30, 40, 50];
+  viewFileUrl:string="http://localhost:9090/viewFile";
 
-  constructor(private ktService: KtService) {}
+  constructor(private ktService: KtService, private router: Router) {}
 
   ngOnInit() {
     this.getKtList();
@@ -27,7 +29,7 @@ export class ViewKtComponent {
     });
   }
 
-  getTableDataChange(event : any){
+  getTableDataChange(event: any) {
     this.page = event;
     this.indexNumber = (this.page - 1) * this.tableSize;
     this.getKtList();
@@ -43,16 +45,27 @@ export class ViewKtComponent {
       cancelButtonText: 'No, cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ktService.deleteKt(ktId).subscribe(data =>{
-          Swal.fire('Data Deleted', 'The data has been successfully deleted.', 'success');
-          this.getKtList();
-        },error =>{
-          Swal.fire('Error', 'An error occurred while fetching the employee data.', 'error');
-        })
+        this.ktService.deleteKt(ktId).subscribe(
+          (data) => {
+            Swal.fire(
+              'Data Deleted',
+              'The data has been successfully deleted.',
+              'success'
+            );
+            this.getKtList();
+          },
+          (error) => {
+            Swal.fire(
+              'Error',
+              'An error occurred while fetching the kt data.',
+              'error'
+            );
+          }
+        );
       }
     });
   }
-  editKt(arg0: any) {
-    throw new Error('Method not implemented.');
+  editKt(ktId: any) {
+    this.router.navigate(['/admin/edit-kt/' + ktId]);
   }
 }

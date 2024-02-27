@@ -25,9 +25,7 @@
         <td>{{kt.VCH_KT_TYPE}}</td>
         <td>{{kt.VCH_KT_FORMAT}}</td>
         <td>{{kt.VCH_KT_PATH}}</td>
-        <td>{{kt.VCH_PROJECT_NAME}}</td>
-        
-        <!-- <td><a target="_blank" href="{{fileURL + emp.emp_file}}"><i class="fa-solid fa-download"></i></a></td> -->
+        <td><a target="_blank"  href="{{viewFileUrl}}/{{kt.VCH_KT_PATH}}" class="btn btn-md btn-success"> <i class="bi bi-arrow-down-square-fill"></i></a></td>
         <td>
             <button type="submit" (click)="editKt(kt.INT_KT_ID)" class="btn btn-primary">Edit</button>
             <button type="submit" (click)="deleteKt(kt.INT_KT_ID)" class="btn btn-danger">Delete</button>
