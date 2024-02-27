@@ -78,13 +78,31 @@ public class CommonController {
 	}
 	
 	@GetMapping(path="/viewFile/{fileName}")
-	public ResponseEntity<?> downloadDocument(HttpServletResponse response,@PathVariable("fileName") String fileName) throws FileNotFoundException{
+	public ResponseEntity<?> downloadDocument(HttpServletResponse response,@PathVariable("fileName") String fileName) throws Exception{
 	 
 	String filePath="";
+	String fileFormat="";
+	String folderName="";
 	filePath = actualFilePath;
 	HttpHeaders headers = new HttpHeaders();
 	headers.add("content-disposition","inline;filename=" + fileName);
-	File file =new File(filePath +"/" +fileName);
+	int lastDotIndex = fileName.lastIndexOf('.');
+	if (lastDotIndex != -1) {
+	    fileFormat = fileName.substring(lastDotIndex + 1);
+	    System.out.println(fileFormat);
+	} else {
+	    throw new Exception("No file format found");
+	}
+	if(fileFormat.equals("mp4") || fileFormat.equals("avi") || 
+			fileFormat.equals("wmv") || fileFormat.equals("mov") || 
+			fileFormat.equals("flv") || fileFormat.equals("mpeg") || 
+			fileFormat.equals("mkv") || fileFormat.equals("webm") || fileFormat.equals("3gp")) {
+		folderName = "VIDEO";
+	}
+	else {
+		folderName = "DOCUMENT";
+	}
+	File file =new File(filePath +folderName+ "/" +fileName);
 	InputStreamResource resource=new InputStreamResource(new FileInputStream(file));
 	String contentType = "";
 	if (null != fileName && fileName.contains(".")) {
