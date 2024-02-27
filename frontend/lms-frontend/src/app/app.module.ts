@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminModule } from './admin/admin.module';
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -23,7 +24,11 @@ import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
     FormsModule,
     RouterModule,
     NgbModule,
-    AdminModule
+    AdminModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground : true,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: MyInterceptorInterceptor, multi: true }

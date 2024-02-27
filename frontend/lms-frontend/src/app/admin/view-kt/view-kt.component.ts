@@ -47,7 +47,7 @@ export class ViewKtComponent {
           Swal.fire('Data Deleted', 'The data has been successfully deleted.', 'success');
           this.getKtList();
         },error =>{
-          Swal.fire('Error', 'An error occurred while fetching the employee data.', 'error');
+          Swal.fire('Error', 'An error occurred while fetching the kt data.', 'error');
         })
       }
     });

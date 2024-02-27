@@ -47,8 +47,11 @@ export class AddKtComponent {
     if (event.target != null) {
       let file = event.target.files[0];
       let fileId = event.target.id;
+      let fileType = this.ktForm.get('ktFormat')?.value;
+      console.log(fileType);
       const fileData = new FormData();
       fileData.append('file', file);
+      fileData.append('fileType' , fileType);
       this.service.setTempFile(fileData).subscribe(
         (data: any) => {
           if (this.ktForm.controls[fileId]) {
