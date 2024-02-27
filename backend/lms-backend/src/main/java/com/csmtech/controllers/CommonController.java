@@ -20,14 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @CrossOrigin("*")
 public class CommonController {
+
 	
 	@Value("${tempfile.path}")
 	private String tempPath;
 
 	@PostMapping("/setTempFile")
-	public ResponseEntity<Map<String, Object>> setTempFile(@RequestParam("file") MultipartFile file)
+	public ResponseEntity<Map<String, Object>> setTempFile(@RequestParam("file") MultipartFile file , @RequestParam("fileType") String fileType)
 			throws IOException {
 		Map<String, Object> response = new HashMap<>();
+		File f1 = null;
 		SecureRandom rs = new SecureRandom();
 		int randomNum = rs.nextInt(900 - 100) + 100;
 		Timestamp tt = new Timestamp(System.currentTimeMillis());
@@ -36,7 +38,14 @@ public class CommonController {
 			String[] fileArray = fileNameType.split("[.]");
 			if (fileArray.length > 1) {
 				String actualType = fileArray[fileArray.length - 1];
-				File f1 = new File(tempPath + "/" + randomNum + tt.getTime() + "." + actualType);
+				System.out.println(fileType);
+				if(fileType.equals("Video")) {
+				f1 = new File(tempPath + "VIDEO" + "/" + randomNum + tt.getTime() + "." + actualType);
+				}
+				else if(fileType.equals("Document")) {
+					f1 = new File(tempPath + "DOCUMENT" + "/" + randomNum + tt.getTime() + "." + actualType);
+				}
+				System.out.println(f1.getAbsolutePath());
 				try (FileOutputStream fos = new FileOutputStream(f1);
 						BufferedOutputStream bos = new BufferedOutputStream(fos)) {
 
