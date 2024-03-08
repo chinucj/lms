@@ -6,14 +6,10 @@ import { environment } from 'src/app/environment';
 import Swal from 'sweetalert2';
 import { LoginService } from '../login.service';
 
-
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   captcha: Captcha = { id: '', text: '' };
@@ -31,15 +27,12 @@ export class LoginComponent {
     private formbuilder: FormBuilder,
     // public vldChkLst: ValidatorchecklistService,
     private route: Router,
-    private servicelogin: LoginService,
-    // private commonService: CommonServiceService
-  ) {
+    private servicelogin: LoginService
+  ) // private commonService: CommonServiceService
+  {
     this.login_form = this.formbuilder.group({
       // userType: [this.userLoginType, [Validators.required]],
-      email: [
-        '',
-        [Validators.required],
-      ],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
       answer: ['', [Validators.required]],
     });
@@ -102,19 +95,19 @@ export class LoginComponent {
 
     if (errFlag == 0) {
       this.login_form.value.captchaId = this.captcha.id;
-     // this.commonService.setLoader(true);
+      // this.commonService.setLoader(true);
 
       this.servicelogin
         .generateTookan(JSON.stringify(this.login_form.value))
         .subscribe(
           (response: any) => {
-           // this.commonService.setLoader(false);
+            // this.commonService.setLoader(false);
 
             this.response = JSON.parse(response);
             this.handleLoginResponse();
           },
           (error: any) => {
-           // this.commonService.setLoader(false);
+            // this.commonService.setLoader(false);
 
             this.generateCaptcha();
             Swal.fire({
@@ -132,22 +125,21 @@ export class LoginComponent {
 
     if (this.response.status === 200) {
       this.servicelogin.loginUser(this.response.result);
-    
+
       sessionStorage.setItem('fullName', this.response.fullName);
       sessionStorage.setItem('userType', this.response.userType);
       sessionStorage.setItem('emailId', this.response.emailId);
       sessionStorage.setItem('mobileNo', this.response.mobileNo);
       sessionStorage.setItem('isLoggedIn', '1');
-      
 
-      if ( this.response.userType == '1') {
+      if (this.response.userType == '1') {
         alert('Login Successfull , Admin');
-       this.route.navigateByUrl('/admin/dashboard');
+        this.route.navigateByUrl('/admin/dashboard');
       } else if (this.response.userType == '2') {
         alert('Login Successfull , User');
-       // this.route.navigateByUrl('/officer/officer-dashboard');
+        // this.route.navigateByUrl('/officer/officer-dashboard');
       }
-      
+
       // else if (this.response.userType == 'A') {
       //   sessionStorage.setItem('isFirstLogin', this.response.isFirstLogin);
       //   if (this.response.isFirstLogin == 1) {
@@ -170,7 +162,7 @@ export class LoginComponent {
     //     this.servicelogin.userLogOut();
     //     this.route.navigateByUrl('/login');
     //   });
-    //} 
+    //}
     else if (this.response.status === 500) {
       // Login failed
       Swal.fire({
@@ -238,16 +230,23 @@ export class LoginComponent {
   }
 
   togglePasswordVisibility() {
-    const passwordinputtype = document.querySelector('.password')!.getAttribute('type');
+    const passwordinputtype = document
+      .querySelector('.password')!
+      .getAttribute('type');
     const passimg = document.querySelector('.passwordshowbtn')!;
     const passwordinput = document.querySelector('.password')!;
 
     if (passwordinputtype == 'password') {
-      passimg.innerHTML = "<img src='" + this.siteURL + "assets/img/view.png' height='17px' alt='view'>";
+      passimg.innerHTML =
+        "<img src='" +
+        this.siteURL +
+        "/assets/csm-logo/view_password_img.png' height='40px' alt='view'>";
       passwordinput.setAttribute('type', 'text');
     } else {
       passimg.innerHTML =
-        "<img src='" +  this.siteURL + "assets/img/hide.png' height='17px' alt='hide'>";
+        "<img src='" +
+        this.siteURL +
+        "/assets/csm-logo/hide_password_img.png' height='40px' alt='hide'>";
 
       passwordinput.setAttribute('type', 'password');
     }
@@ -258,5 +257,5 @@ export class LoginComponent {
     this.servicelogin.generateCaptcha().subscribe((data: Captcha) => {
       this.captcha = data;
     });
-}
+  }
 }

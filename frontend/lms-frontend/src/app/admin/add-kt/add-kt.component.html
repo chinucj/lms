@@ -1,100 +1,103 @@
 <div class="container mt-5">
-  <h3>Add Knowledge Transfer</h3>
-  <div class="card mt-5">
-    <form [formGroup]="ktForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
-      <div class="row m-5">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="ktName">KT Name:</label>
-            <span class="text-danger">*</span>
-            <input type="text" formControlName="ktName" class="form-control" />
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">Add Knowledge Transfer</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="ktForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+        <div class="row m-5">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ktName">KT Name:</label>
+              <span class="text-danger">*</span>
+              <input type="text" formControlName="ktName" class="form-control" />
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="ktFormat">KT Format:</label>
-            <span class="text-danger">*</span>
-            <select id="ktFormat" formControlName="ktFormat" class="form-control">
-              <option value="">Select KT Format</option>
-              <option value="Video">Video</option>
-              <option value="Document">Document</option>
-            </select>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ktFormat">KT Format:</label>
+              <span class="text-danger">*</span>
+              <select id="ktFormat" formControlName="ktFormat" class="form-control">
+                <option value="">Select KT Format</option>
+                <option value="Video">Video</option>
+                <option value="Document">Document</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="ktFilePath">KT File Path:</label>
-            <span class="text-danger">*</span>
-            <input type="file" id="ktFilePath" class="form-control" (change)="uploadFile($event)" />
-            <div *ngIf="id > 0">
-              <a target="_blank" href="{{ viewFileUrl }}/{{ ktForm.value.ktFilePath }}" class="btn btn-md btn-success">
-                <i class="bi bi-arrow-down-square-fill"></i></a>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ktFilePath">KT File Path:</label>
+              <span class="text-danger">*</span>
+              <input type="file" id="ktFilePath" class="form-control" (change)="uploadFile($event)" />
+              <div *ngIf="id > 0">
+                <a target="_blank" href="{{ viewFileUrl }}/{{ ktForm.value.ktFilePath }}"
+                  class="btn btn-md btn-success">
+                  <i class="bi bi-arrow-down-square-fill"></i></a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="row m-5">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="ktType">KT Type:</label>
-            <span class="text-danger">*</span>
-            <select id="subModuleId" formControlName="subModuleId" class="form-control">
-              <option value="">Select KT Type</option>
-              <option *ngFor="let ktType of subModuleList" value="{{ ktType.SUB_MODULE_ID }}">
-                {{ ktType.SUB_MODULE_NAME }}
+        <div class="row m-5">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="ktType">KT Type:</label>
+              <span class="text-danger">*</span>
+              <select id="subModuleId" formControlName="subModuleId" class="form-control">
+                <option value="">Select KT Type</option>
+                <option *ngFor="let ktType of subModuleList" value="{{ ktType.SUB_MODULE_ID }}">
+                  {{ ktType.SUB_MODULE_NAME }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4" *ngIf="ktForm.get('subModuleId')?.value == '4'">
+            <div class="form-group">
+              <label for="projectName">Project Name:</label>
+              <select formControlName="projectId" class="form-control">
+                <option value="">Select Project Name</option>
+                <option *ngFor="let project of projectList" value="{{ project.projectId }}">
+                  {{ project.projectName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4" *ngIf="ktForm.get('subModuleId')?.value == '5'">
+            <div class="form-group">
+              <label for="projectName">Project Name:</label>
+              <select formControlName="projectId" class="form-control">
+                <option value="">Select Project Name</option>
+                <option *ngFor="let project of projectList" value="{{ project.projectId }}">
+                  {{ project.projectName }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div *ngIf="ktForm.get('subModuleId')?.value == '5'" class="form-group" class="col-md-4">
+            <label for="designationMaster">Designation Master:</label>
+            <select class="form-control" formControlName="designationId" id="designationId">
+              <option value="">--Select--</option>
+              <option *ngFor="let des of designationtList" value="{{ des.desgnId }}">
+                {{ des.desgnName }}
               </option>
             </select>
           </div>
         </div>
-        <div class="col-md-4" *ngIf="ktForm.get('subModuleId')?.value == '4'">
-          <div class="form-group">
-            <label for="projectName">Project Name:</label>
-            <select formControlName="projectId" class="form-control">
-              <option value="">Select Project Name</option>
-              <option *ngFor="let project of projectList" value="{{ project.projectId }}">
-                {{ project.projectName }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-4" *ngIf="ktForm.get('subModuleId')?.value == '5'">
-          <div class="form-group">
-            <label for="projectName">Project Name:</label>
-            <select formControlName="projectId" class="form-control">
-              <option value="">Select Project Name</option>
-              <option *ngFor="let project of projectList" value="{{ project.projectId }}">
-                {{ project.projectName }}
-              </option>
-            </select>
-          </div>
+        <div *ngIf="id === 0" class="text-center mb-5">
+          <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
+            Submit</button>&nbsp;
+          <button class="btn btn-danger" type="reset">Reset</button>
         </div>
 
-        <div *ngIf="ktForm.get('subModuleId')?.value == '5'" class="form-group" class="col-md-4">
-          <label for="designationMaster">Designation Master:</label>
-          <select class="form-control" formControlName="designationId" id="designationId">
-            <option value="">--Select--</option>
-            <option *ngFor="let des of designationtList" value="{{ des.desgnId }}">
-              {{ des.desgnName }}
-            </option>
-          </select>
+        <div *ngIf="id > 0" class="text-center mb-5">
+          <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
+            Update</button>&nbsp;
+          <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
         </div>
-      </div>
-      <div *ngIf="id === 0" class="text-center mb-5">
-        <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
-          Submit</button>&nbsp;
-
-        <button class="btn btn-danger" type="reset">Reset</button>
-      </div>
-
-      <div *ngIf="id > 0" class="text-center mb-5">
-        <button type="submit" [disabled]="ktForm.invalid" class="btn btn-primary">
-          Update</button>&nbsp;
-
-        <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

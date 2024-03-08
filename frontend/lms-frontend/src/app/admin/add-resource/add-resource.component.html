@@ -1,87 +1,62 @@
-<h3>Registration Form</h3>
-
-<form (ngSubmit)="submit()" [formGroup]="UserMasterForm">
-
-  <div class="container">
-
-    <div class="row">
-
-      <div class="form-group col-md-4">
-
-        <label for="fullName">Full Name</label>
-
-        <input type="text" class="form-control" id="fullName" formControlName="fullName">
-
-      </div> 
-
-
-
-      <div class="form-group col-3">
-
-        <label>Designation</label>
-
-        <select class="form-control" formControlName="designationId" id="designationId">
-
-            <option value="">--Select--</option>
-
-            
-
-            <option *ngFor="let des of designationtList" value="{{des.desgnId}}">
-
-                  {{des.desgnName}}
-
-            </option>
-
-        </select>
-
-        </div> 
-
-
-
-      <div class="form-group col-md-4">
-
-        <label for="contactNumber">Contact Number</label>
-
-        <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber">
-
-      </div> 
-
-    </div> <!-- End of first row -->
-
-
-
-    <div class="row">
-
-      <div class="form-group col-md-4">
-
-        <label for="emailId">Email-Id</label>
-
-        <input type="text" class="form-control" id="emailId" formControlName="emailId" [readOnly]="isReadOnly">
-
-      </div> 
-
-
-
-      <div class="form-group col-md-4">
-
-        <label for="location">Location</label>
-
-        <input type="text" class="form-control" id="location" formControlName="location">
-
-      </div> 
-
-    </div> <!-- End of second row -->
-
-
-
-    <div class="form-group col-md-12 text-center">
-
-      <button class="btn btn-success mt-2" type="submit">Registration</button>&nbsp;   
-
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">Add User Registration</h3>
     </div>
-
+    <div class="card-body">
+      <form (ngSubmit)="submit()" [formGroup]="UserMasterForm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" formControlName="fullName">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber">
+              </div>
+            </div>
+          
+          
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="emailId">Email-Id</label>
+                <input type="text" class="form-control" id="emailId" formControlName="emailId" [readOnly]="isReadOnly">
+              </div>
+            </div>
+            </div>
+            <div class="row mt-5">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" formControlName="location">
+              </div>
+            
+          </div> <!-- End of second row -->
+          
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="designationId">Designation</label>
+                <select class="form-control" formControlName="designationId" id="designationId">
+                  <option value="">--Select--</option>
+                  <option *ngFor="let des of designationtList" [value]="des.desgnId">
+                    {{ des.desgnName }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div> 
+        
+            <div class="text-center mt-5">
+              <button class="btn btn-success mt-2" type="submit">Registration</button>&nbsp;
+              <button class="btn btn-danger mt-2" type="Reset">Reset</button>
+            </div>
+           
+        </div>
+      </form>
+    </div>
   </div>
-
-</form>
-{{UserMasterForm.value | json}}
-
+</div>
