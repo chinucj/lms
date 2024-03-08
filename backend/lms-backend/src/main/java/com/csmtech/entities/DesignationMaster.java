@@ -8,16 +8,16 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "PROJECT_MASTER")
-public class ProjectMaster {
+@Table(name = "DESIGNATION_MASTER")
+public class DesignationMaster {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PROJECT_ID")
-    private Long projectId;
+    @Column(name = "DESGN_ID")
+    private Long desgnId;
 
-    @Column(name = "PROJECT_NAME")
-    private String projectName;
+    @Column(name = "DESGN_NAME")
+    private String desgnName;
 
     @Column(name = "CREATED_BY")
     private Integer createdBy;
@@ -34,4 +34,5 @@ public class ProjectMaster {
     @Column(name = "DELETED_FLAG")
     private Boolean deletedFlag;
 
+    
 }

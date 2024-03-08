@@ -9,6 +9,8 @@ import { AddKtComponent } from './add-kt/add-kt.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewKtComponent } from './view-kt/view-kt.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddResourceComponent } from './add-resource/add-resource.component';
+import { ViewResourceComponent } from './view-resource/view-resource.component';
 
 
 
@@ -18,7 +20,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminHomeComponent,
     SidebarComponent,
     AddKtComponent,
-    ViewKtComponent
+    ViewKtComponent,
+    AddResourceComponent,
+    ViewResourceComponent
   ],
   imports: [
     CommonModule,

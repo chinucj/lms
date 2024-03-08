@@ -142,7 +142,7 @@ export class LoginComponent {
 
       if ( this.response.userType == '1') {
         alert('Login Successfull , Admin');
-       this.route.navigateByUrl('/admin');
+       this.route.navigateByUrl('/admin/dashboard');
       } else if (this.response.userType == '2') {
         alert('Login Successfull , User');
        // this.route.navigateByUrl('/officer/officer-dashboard');

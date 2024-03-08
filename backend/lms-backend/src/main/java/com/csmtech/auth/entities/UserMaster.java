@@ -15,51 +15,50 @@ public class UserMaster {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "INT_USER_ID")
+	@Column(name = "USER_ID")
 	private Integer userId;
 
-	@Column(name = "VCH_PASSWORD")
-	private String password;
+    @Column(name = "PASSWORD")
+    private String password;
 
-	@Column(name = "VCH_FULL_NAME")
-	private String fullName;
+    @Column(name = "FULL_NAME")
+    private String fullName;
 
-	@Column(name = "INT_DESGN_ID")
-	private Integer designationId;
+    @Column(name = "DESGN_ID")
+    private Integer designationId;
 
-	@Column(name = "VCH_CONTACT_NO")
-	private String contactNumber;
+    @Column(name = "CONTACT_NO")
+    private String contactNumber;
 
-	@Column(name = "VCH_EMAIL_ID")
-	private String email;
+    @Column(name = "EMAIL_ID")
+    private String email;
 
-	@Column(name = "VCH_NORMAL_PASS")
-	private String normalPassword;
+    @Column(name = "NORMAL_PASS")
+    private String normalPassword;
 
-	@Column(name = "INT_CREATED_BY")
-	private Integer createdBy;
+    @Column(name = "CREATED_BY")
+    private Integer createdBy;
 
-	@Column(name = "DTM_CREATED_ON")
+    @Column(name = "CREATED_ON")
+    private Date createdOn;
 
-	private Date createdOn;
+    @Column(name = "UPDATED_BY")
+    private Integer updatedBy;
 
-	@Column(name = "INT_UPDATED_BY")
-	private Integer updatedBy;
+    @Column(name = "UPDATED_ON")
+    private Date updatedOn;
 
-	@Column(name = "DTM_UPDATED_ON")
-	private Date updatedOn;
+    @Column(name = "DELETED_FLAG")
+    private Boolean deletedFlag;
 
-	@Column(name = "BIT_DELETED_FLAG")
-	private Boolean deletedFlag;
+    @Column(name = "USER_TYPE")
+    private Integer userType;
 
-	@Column(name = "INT_USER_TYPE")
-	private Integer userType;
+    @Column(name = "PROJECT_ID")
+    private Integer projectId;
 
-	@Column(name = "INT_PROJECT_ID")
-	private Integer projectId;
-
-	@Column(name = "VCH_LOCATION")
-	private String location;
+    @Column(name = "LOCATION")
+    private String location;
 
 	public Integer getUserId() {
 		return userId;

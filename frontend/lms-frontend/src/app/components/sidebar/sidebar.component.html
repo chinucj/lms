@@ -1,145 +1,115 @@
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline"><img src="../../../assets/csm-logo/csm logo.jpg" alt="csm logo" srcset="" height="80" width="160"></span>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header text-center">
+            <span class="fs-5 d-none d-sm-inline"><img src="../../../assets/csm-logo/csm logo.jpg" height="90px" weight="auto"></span>
+        </div>
+
+        <ul class="list-unstyled components" id="menu">
+            <!-- <li class="nav-item">
+                <a (click)="toggleHomeContent()" class="nav-link">Home</a>
+            </li> -->
+            <li class="">
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link dropdown align-middle dropdown-toggle sidebar-navlink" >
+                     
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Induction</span>
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
+                <ul class="collapse " id="submenu1" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a routerLink="" class="nav-link"> <span class="d-none d-sm-inline">Add Induction</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle" routerLink="/admin/dashboard">
-                            <i class="fs-4 bi-bar-chart-line"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a href="#submenu10" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add/View User</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu10" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> Add User </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> View User </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-bar-chart-line"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <!-- <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                    </li> -->
-                    <!-- <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-inbox"></i> <span class="ms-1 d-none d-sm-inline">Induction</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-microsoft-teams"></i> <span class="ms-1 d-none d-sm-inline">Knowledge Transfer</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0" routerLink="/admin/add-kt">Add KT </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0" routerLink="/admin/view-kt">View KT</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-book"></i> <span class="ms-1 d-none d-sm-inline">Training</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li> -->
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-pie-chart"></i> <span class="ms-1 d-none d-sm-inline">Analysis</span> </a>
+                        <a routerLink="" class="nav-link "> <span class="d-none d-sm-inline">View Induction</span></a>
                     </li>
                 </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">Chinmaya Jena</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
+                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link dropdown align-middle dropdown-toggle sidebar-navlink">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">KT</span> </a>
+                <ul class="collapse " id="submenu2" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a href="#" class="nav-link " routerLink="/admin/add-kt"> <span class="d-none d-sm-inline">Add KT</span></a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link " routerLink="/admin/view-kt"> <span class="d-none d-sm-inline">View KT</span></a>
+                    </li>
+                </ul>
+
+                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link dropdown align-middle dropdown-toggle sidebar-navlink" >
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Training</span> 
+                </a>
+                <ul class="collapse " id="submenu3" data-bs-parent="#menu">
+                    <li class="w-100">
+                        <a href="#submenu3-general" data-bs-toggle="collapse" class="nav-link dropdown dropdown-toggle "> <span class="d-none d-sm-inline">General</span> </a>
+                        <ul class="collapse" id="submenu3-general">
+                            <li>
+                                <a href="#" class="nav-link"> <span class="d-none d-sm-inline">Technical</span> </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link"> <span class="d-none d-sm-inline">Non-Technical</span> </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link "> <span class="d-none d-sm-inline">Soft Skill</span>  </a>
+                    </li>
+                </ul>
+
+                <a href="#submenu4" data-bs-toggle="collapse" class="nav-link dropdown align-middle dropdown-toggle sidebar-navlink">
+                    <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Resource Management</span>
+                </a>
+
+                <ul class="collapse " id="submenu4" data-bs-parent="#menu">
+
+                    <li class="w-100">
+
+                        <a routerLink="/admin/add-resource" class="nav-link"> <span class="d-none d-sm-inline">Add Resource Management</span></a>
+
+                    </li>
+
+                    <li>
+
+                        <a routerLink="/admin/view-resource" class="nav-link "> <span class="d-none d-sm-inline">View Resource Management</span></a>
+
+                    </li>
+
+                </ul>
+
+
+            </li>
+        </ul>
+
+    
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"><span class="h4 font-weight-bold" style="color:#108fbb;">Learning Management System</span></a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">
+                                <img src=""  width="30" height="30" class="rounded-circle">
+                                <span class="d-none d-sm-inline mx-1">
+                                    {{ username }}
+                                  </span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" (click)="logout()">Log Out</a>
+                        </li>
+                        
                     </ul>
                 </div>
+                
             </div>
+        </nav>
+        <div>
+            <router-outlet></router-outlet>
         </div>
-        <!-- <div class="col py-3">
-            <div class="" style="background-color: #e3f2fd;">
-               <h2 class="text-center">Learning Management System</h2>
-            </div>
-        </div> -->
-     </div>
+    </div>
 </div>

@@ -11,6 +11,7 @@
                     <th>KT Format</th>
                     <th>KT File</th>
                     <th>Project Name</th>
+                    <th>Designation</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -21,14 +22,15 @@
             totalItems: count
             }; let i = index;">
         <td>{{i+1}}</td>
-        <td>{{kt.VCH_KT_NAME}}</td>
-        <td>{{kt.VCH_KT_TYPE}}</td>
-        <td>{{kt.VCH_KT_FORMAT}}</td>
-         <td><a target="_blank"  href="{{viewFileUrl}}/{{kt.VCH_KT_PATH}}" class="btn btn-md btn-success"> <i class="bi bi-arrow-down-square-fill"></i></a></td>
-         <td>{{kt.VCH_PROJECT_NAME}}</td>
+        <td>{{kt.KT_NAME}}</td>
+        <td>{{kt.SUB_MODULE_NAME}}</td>
+        <td>{{kt.KT_FORMAT}}</td>
+         <td><a target="_blank"  href="{{viewFileUrl}}/{{kt.KT_PATH}}" class="btn btn-md btn-success"> <i class="bi bi-arrow-down-square-fill"></i></a></td>
+         <td>{{kt.PROJECT_NAME}}</td>
+         <td>{{kt.DESGN_NAME != null ? kt.DESGN_NAME : "--"}}</td>
          <td>
-            <button type="submit" (click)="editKt(kt.INT_KT_ID)" class="btn btn-primary">Edit</button>
-            <button type="submit" (click)="deleteKt(kt.INT_KT_ID)" class="btn btn-danger">Delete</button>
+            <button type="submit" (click)="editKt(kt.KT_ID)" class="btn btn-primary">Edit</button>
+            <button type="submit" (click)="deleteKt(kt.KT_ID)" class="btn btn-danger">Delete</button>
         </td>
         </tr>
             </tbody>

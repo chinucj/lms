@@ -1,0 +1,48 @@
+<h2 class="text-center">User Registration Details</h2>
+
+
+
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+
+<th>Sl.No</th>
+
+<th>Full Name</th>
+
+<th>Designation</th>
+
+<th>Contact Number</th>
+
+<th>Email-Id</th>
+
+<th>Location</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+    <tr *ngFor="let user of usersList; let i= index;">
+        <td>{{i+1}}</td>
+        <td>{{user.VCH_FULL_NAME}}</td>
+        <td>{{user.VCH_DESGN_NAME}}</td>
+        <td>{{user.VCH_CONTACT_NO}}</td>
+        <td>{{user.VCH_EMAIL_ID}}</td>
+        <td>{{user.VCH_LOCATION}}</td>
+        <td>
+            <button class="btn btn-primary" (click)="editUser(user.INT_USER_ID)" >Edit</button>
+            <button class="btn btn-danger mx-2" (click)="deleteUser(user.INT_USER_ID)">Delete</button>
+        </td>
+    </tr>
+</tbody>
+
+
+
+</table>
+

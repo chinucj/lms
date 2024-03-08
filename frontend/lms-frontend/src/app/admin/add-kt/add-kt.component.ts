@@ -5,6 +5,8 @@ import { ProjectService } from '../project.service';
 import Swal from 'sweetalert2';
 import { KtService } from '../kt.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SubmoduleService } from '../submodule.service';
+import { ResourceService } from '../resource.service';
 
 @Component({
   selector: 'app-add-kt',
@@ -15,26 +17,34 @@ export class AddKtComponent {
 
   ktForm!: FormGroup;
   projectList : any;
+  subModuleList : any;
+  designationtList: any;
   id: any;
   viewFileUrl:string="http://localhost:9090/viewFile";
 
   constructor(private formBuilder: FormBuilder , private service : CommonService , 
     private projectService : ProjectService,
     private ktService : KtService,
+    private resourceService: ResourceService,
     private activatedRoute : ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private subModuleService : SubmoduleService
     ){
     this.ktForm = this.formBuilder.group({
       ktName: ['', Validators.required],
-      ktType: ['', Validators.required],
+      subModuleId: ['', Validators.required],
       ktFormat: ['', Validators.required],
       ktFilePath: ['', Validators.required],
-      projectId: ['', Validators.required]
+      projectId: ['', Validators.required],
+      designationId : [''],
+      createdOn : ['']
     });
   }
 
   ngOnInit(){
     this.getAllProjects();
+    this.getSubModuleOfKt();
+    this.getDesignationList();
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
 
     if(this.id >0){
@@ -49,39 +59,40 @@ export class AddKtComponent {
 
      }
   }
+  getSubModuleOfKt() {
+    this.subModuleService.getSubModuleForKt().subscribe((data : any)=>{
+      console.log(data);
+      
+      this.subModuleList = data;
+    })
+  }
+  getDesignationList() {
+    this.resourceService.getDesignaionList().subscribe((responseData: any) => {
+      this.designationtList = responseData;
+    });
+  }
+
   getKtById(id:any){
 
-    this.ktService.getKtById(id).subscribe((data:any)=>{
- 
+    this.ktService.getKtById(id).subscribe((data:any)=>{     
       this.ktForm.patchValue({
- 
-       ktName:data.VCH_KT_NAME,
- 
-       ktType:data.VCH_KT_TYPE,
- 
-       ktFormat:data.VCH_KT_FORMAT,
- 
-       ktFilePath:data.VCH_KT_PATH,
- 
-       projectId:data.INT_PROJECT_ID
- 
+       ktName:data.KT_NAME,
+       subModuleId:data.SUB_MODULE_ID,
+       ktFormat:data.KT_FORMAT,
+       ktFilePath:data.KT_PATH,
+       projectId:data.PROJECT_ID,
+       designationId : data.DESGN_ID,
+       createdOn : data.CREATED_ON
       });
- 
     }); 
- 
    }
- 
-
-
 
   getAllProjects() {
     this.projectService.getAllProjects().subscribe((data : any)=>{
       this.projectList = data;
     })
   }
-
   
-
   uploadFile(event: any) {
     if (event.target != null) {
       let file = event.target.files[0];
@@ -186,9 +197,7 @@ export class AddKtComponent {
     if (errorFlag === 0) {
 
       this.ktForm.value.ktId = this.id;
-
       alert(this.ktForm.value.ktId);
-
       Swal.fire({
 
         title: 'Save Data',
@@ -293,10 +302,25 @@ export class AddKtComponent {
 
 
   cancel(){
+    Swal.fire({
 
+      title: 'Cancel Updating',
+
+      text: 'Are you sure you want to cancel this operation?',
+
+      icon: 'question',
+
+      showCancelButton: true,
+
+      confirmButtonText: 'Yes, Cancel',
+
+      cancelButtonText: 'No',
+
+    }).then((result) => {
+
+      if (result.isConfirmed) {
     this.router.navigate(['/admin/view-kt']);
-
-  }
-  
+      }
+    })}
 }
 

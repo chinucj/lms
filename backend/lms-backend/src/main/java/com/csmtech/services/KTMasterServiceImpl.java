@@ -21,18 +21,30 @@ public class KTMasterServiceImpl implements KTMasterService {
 	public KTMaster saveKTMaster(KTMasterDto ktMasterDto) {
 		KTMaster ktMaster = new KTMaster();
 
-		if (ktMasterDto.getKtId() != null) {
+		if (ktMasterDto.getKtId() != 0) {
 			ktMaster.setKtId(ktMasterDto.getKtId());
+			ktMaster.setCreatedBy(1);
+			ktMaster.setCreatedOn(ktMasterDto.getCreatedOn());
+			ktMaster.setUpdatedBy(1);
+			ktMaster.setUpdatedOn(new Date());
+		}
+		else {
+			ktMaster.setCreatedBy(1);
+			ktMaster.setCreatedOn(new Date());
 		}
 		ktMaster.setKtName(ktMasterDto.getKtName());
-		ktMaster.setKtType(ktMasterDto.getKtType());
+		ktMaster.setSubModuleId(ktMasterDto.getSubModuleId());
 		ktMaster.setKtFormat(ktMasterDto.getKtFormat());
-		ktMaster.setKtFilePath(ktMasterDto.getKtFilePath());
-		ktMaster.setProjectId(ktMasterDto.getProjectId());
-		ktMaster.setCreatedBy(1);
-		ktMaster.setCreatedOn(new Date());
-		ktMaster.setUpdatedBy(1);
-		ktMaster.setUpdatedOn(new Date());
+		ktMaster.setKtPath(ktMasterDto.getKtFilePath());
+		
+		if(ktMasterDto.getSubModuleId() == 4) {
+			ktMaster.setProjectId(ktMasterDto.getProjectId());
+		}
+		else if(ktMasterDto.getSubModuleId() == 5) {
+			ktMaster.setProjectId(ktMasterDto.getProjectId());
+			ktMaster.setDesignationId(ktMasterDto.getDesignationId());
+		}
+		
 		ktMaster.setDeletedFlag(false);
 
 		return ktMasterRepository.save(ktMaster);
