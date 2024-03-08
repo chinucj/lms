@@ -93,7 +93,7 @@ public class JwtUtil {
 	
 	public String generateToken(UserDetails userDetails) {
 		return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)).signWith(getSigninKey(), SignatureAlgorithm.HS256)
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7)).signWith(getSigninKey(), SignatureAlgorithm.HS256)
 				.compact();
 	}
 	
