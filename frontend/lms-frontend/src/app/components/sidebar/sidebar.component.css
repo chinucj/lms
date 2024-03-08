@@ -157,13 +157,38 @@ a.article:hover {
 ----------------------------------------------------- */
 
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
     }
+
+    #sidebar {
+        min-width: auto;
+        max-width: 100%;
+        margin-left: 0;
+        overflow-y: auto; /* Add this line to make the text scrollable */
+        max-height: 80vh; /* Set max-height to limit the sidebar height and enable scrolling */
+    }
+
     #sidebar.active {
         margin-left: 0;
     }
-    #sidebarCollapse span {
-        display: none;
+
+    #content {
+        padding: 20px;
+    }
+
+    /* Add other responsive styles as needed */
+}
+
+/* Media query for displaying full sidebar text */
+@media (min-width: 768px) {
+    #sidebar .list-unstyled.components li a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
+
+
+
